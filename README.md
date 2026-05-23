@@ -103,7 +103,7 @@ Pipeline stages (in order):
 5. `kick-off-e2e` — triggers the separate E2E workflow
 6. `notify-success` / `notify-failure` — Discord notification
 
-The self-hosted runner executes `deploy.sh` for zero-downtime deployment. The container runs on the `proxy` Docker network. Traefik routes `studio.922-studio.com` to port 3000.
+The polaris runner executes `deploy.sh` for zero-downtime deployment. The container runs on the `proxy` Docker network. Traefik routes `studio.922-studio.com` to port 3000.
 
 On failure, a GitHub issue is created automatically and a Discord failure alert is sent.
 

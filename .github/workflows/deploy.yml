@@ -51,7 +51,7 @@ jobs:
       build_command: 'npm run build'
       run_build: true
       allure_results_dir: 'reports/allure'
-      allure_server_url: 'http://home-lab:5050'
+      allure_server_url: 'http://astro-antares:5050'
       allure_project_id: 'studio-unit'
       allure_launch_name: 'Studio Unit Tests'
     secrets:
@@ -80,7 +80,7 @@ jobs:
   kick-off-e2e:
     name: Kick off E2E tests
     needs: tests
-    runs-on: self-hosted
+    runs-on: polaris
     steps:
       - name: Trigger E2E workflow
         run: |
