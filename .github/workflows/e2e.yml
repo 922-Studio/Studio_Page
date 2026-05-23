@@ -9,7 +9,7 @@ on:
 jobs:
   e2e:
     name: Playwright E2E tests
-    runs-on: self-hosted
+    runs-on: polaris
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -24,10 +24,10 @@ jobs:
       - name: Upload Allure results
         if: always()
         run: |
-          curl -X POST "${{ vars.ALLURE_SERVER_URL || 'http://home-lab:5050' }}/allure-docker-service/send-results?project_id=studio-e2e" \
+          curl -X POST "${{ vars.ALLURE_SERVER_URL || 'http://astro-antares:5050' }}/allure-docker-service/send-results?project_id=studio-e2e" \
             -H 'Content-Type: multipart/form-data' \
             $(find allure-results -name '*.json' -o -name '*.txt' -o -name '*.xml' | sed 's/^/-F files=@/')
       - name: Generate Allure report
         if: always()
         run: |
-          curl -X GET "${{ vars.ALLURE_SERVER_URL || 'http://home-lab:5050' }}/allure-docker-service/generate-report?project_id=studio-e2e"
+          curl -X GET "${{ vars.ALLURE_SERVER_URL || 'http://astro-antares:5050' }}/allure-docker-service/generate-report?project_id=studio-e2e"

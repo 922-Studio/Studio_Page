@@ -10,7 +10,7 @@
 - **Language(s)**: TypeScript 5+ (strict), React 19
 - **Framework(s)**: Next.js 16, next-intl, Tailwind CSS 4, next-mdx-remote, gray-matter
 - **Infrastructure**: Docker, Traefik (`proxy` network), Cloudflare Tunnel
-- **CI/CD**: GitHub Actions (reusable workflows from `922-Studio/workflows`), self-hosted runner → `deploy.sh`
+- **CI/CD**: GitHub Actions (reusable workflows from `922-Studio/workflows`), polaris runner → `deploy.sh`
 
 ## Key Files to Read
 
@@ -52,7 +52,7 @@
 ## Pipeline & Deployment
 - **CI trigger**: Push to `main` + manual dispatch
 - **Pipeline**: cancel-previous → version → tests → deploy → Discord notify
-- **Deploy**: GitHub Actions → self-hosted runner → `./deploy.sh` (zero-downtime, build-first)
+- **Deploy**: GitHub Actions → polaris runner → `./deploy.sh` (zero-downtime, build-first)
 - **Container**: `studio` on `proxy` network, internal port 3000, Traefik-routed
 - **Monitor after push**: CI green, Discord notification, https://studio.922-studio.com reachable
 
